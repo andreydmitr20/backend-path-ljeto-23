@@ -160,7 +160,7 @@ inputSimpleTest(skip,
 """
 
 
-3. Napravite program kojim ćete pomoći svojoj razrednici (ili razredniku)
+4. Napravite program kojim ćete pomoći svojoj razrednici (ili razredniku)
 u ispisanju svjedodžbi. Omogućite im unos datuma u obliku: dd.mm.ggg.
 Upisani datum ispišite na zaslon tako da mjesec umjesto brojem bude ispisan
 njegovim nazivom"""
