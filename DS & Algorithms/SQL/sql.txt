@@ -37,9 +37,9 @@ CREATE TABLE projekcija
   PID INT NOT NULL,
   broj_gledalaca INT NOT NULL,
   FID INT NOT NULL,
-  broj_zala INT NOT NULL,
+  broj_sala INT NOT NULL,
   BID VARCHAR(100) NOT NULL,
   PRIMARY KEY (PID),
   FOREIGN KEY (FID) REFERENCES film(FID),
-  FOREIGN KEY (broj_zala, BID) REFERENCES sala(broj_sala, BID)
+  FOREIGN KEY (broj_sala, BID) REFERENCES sala(broj_sala, BID)
 );
