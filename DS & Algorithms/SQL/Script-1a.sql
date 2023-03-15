@@ -1,3 +1,5 @@
+/*Izlistati naslove filmova, zajedno sa brojem različitih gradova u kojima su projektovani,
+pod uslovom da je taj broj veći od 5.*/
 select 
 	naslov, 
 	(select 
@@ -17,7 +19,6 @@ from
 	from 
 		film f 
 		inner join projekcija p on f.FID = p.FID
-		inner join bioskop b on p.BID = b.BID  
 	)
 WHERE
 	grad_broj>5
