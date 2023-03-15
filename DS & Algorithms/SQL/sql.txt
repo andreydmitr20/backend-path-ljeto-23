@@ -1,0 +1,45 @@
+CREATE TABLE grad
+(
+  grad_naziv VARCHAR(100) NOT NULL,
+  drzava VARCHAR(100) NOT NULL,
+  broj_stanovnika VARCHAR(100) NOT NULL,
+  PRIMARY KEY (grad_naziv)
+);
+
+CREATE TABLE bioskop
+(
+  BID VARCHAR(100) NOT NULL,
+  ime VARCHAR(100) NOT NULL,
+  grad_naziv VARCHAR(100) NOT NULL,
+  PRIMARY KEY (BID),
+  FOREIGN KEY (grad_naziv) REFERENCES grad(grad_naziv)
+);
+
+CREATE TABLE sala
+(
+  broj_sala INT NOT NULL,
+  kapacitet INT NOT NULL,
+  BID VARCHAR(100) NOT NULL,
+  PRIMARY KEY (broj_sala, BID),
+  FOREIGN KEY (BID) REFERENCES bioskop(BID)
+);
+
+CREATE TABLE film
+(
+  FID INT NOT NULL,
+  naslov VARCHAR(200) NOT NULL,
+  trajanje INT NOT NULL,
+  PRIMARY KEY (FID)
+);
+
+CREATE TABLE projekcija
+(
+  PID INT NOT NULL,
+  broj_gledalaca INT NOT NULL,
+  FID INT NOT NULL,
+  broj_zala INT NOT NULL,
+  BID VARCHAR(100) NOT NULL,
+  PRIMARY KEY (PID),
+  FOREIGN KEY (FID) REFERENCES film(FID),
+  FOREIGN KEY (broj_zala, BID) REFERENCES sala(broj_sala, BID)
+);
