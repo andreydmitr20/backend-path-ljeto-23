@@ -19,7 +19,10 @@ from
 		inner join projekcija p on f.FID = p.FID
 		inner join bioskop b on p.BID = b.BID  
 	)
-order by naslov
+WHERE
+	grad_broj>5
+order by 
+	naslov
 ;
 
 
