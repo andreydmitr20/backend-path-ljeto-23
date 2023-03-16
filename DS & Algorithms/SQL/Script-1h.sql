@@ -1,18 +1,35 @@
 /*  Naći film koji je u svakoj sali projektovan bar 2 puta.*/
-/* TODO */
-	SELECT
-		f.naslov,	
-		p.BID,
-		p.broj_sala,
-		p.FID as FID,
-		count(*) as projektovan	
-	FROM
-		projekcija p
-		inner join film f on f.FID=p.FID
-	group BY 
-		p.BID,
-		p.broj_sala,
-		p.FID
-	HAVING 
-		projektovan>=2
-	;
+SELECT 
+	naslov_ as film,
+	sum(
+		(
+		select 
+			count(*) 
+		from
+			projekcija p 
+		WHERE 
+			p.FID = FID_ AND 
+			p.BID = BID_ AND 
+			p.broj_sala = broj_sala_
+		)>=2
+	   ) as prikazan_u_sale
+from (
+		SELECT
+			s.BID as BID_,
+			s.broj_sala	as broj_sala_,
+			f.naslov as naslov_,
+			f.FID as FID_
+		FROM
+			sala s,
+			film f	
+	)	
+group by 
+	naslov_
+having 
+	prikazan_u_sale = (
+		SELECT 
+			count(*)
+		from
+			sala 
+			)
+;
