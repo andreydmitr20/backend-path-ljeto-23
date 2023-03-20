@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",  # A messaging framework
     "django.contrib.staticfiles",  # A framework for managing static files
     "drf_yasg",  # swagger
+    "django_admin_shell",  # admin shell
     "polls.apps.PollsConfig",
 ]
 

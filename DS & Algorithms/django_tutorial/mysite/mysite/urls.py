@@ -21,7 +21,7 @@ from rest_framework import permissions
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Snippets API",
+        title="Polls API",
         default_version="v1",
         description="Test description",
         terms_of_service="https://www.google.com/policies/terms/",
@@ -46,6 +46,7 @@ urlpatterns = [
     re_path(
         r"^redoc/$", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"
     ),
+    re_path(r"^admin/shell/", include("django_admin_shell.urls")),
     path("admin/", admin.site.urls),
     path("polls/", include("polls.urls")),
 ]
