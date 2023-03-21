@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",  # A session framework
     "django.contrib.messages",  # A messaging framework
     "django.contrib.staticfiles",  # A framework for managing static files
-    "drf_yasg",  # swagger
+    "drf_spectacular",  # swagger
     "django_admin_shell",  # admin shell
     "polls.apps.PollsConfig",
 ]
@@ -58,7 +58,7 @@ ROOT_URLCONF = "mysite.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -125,3 +125,16 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+REST_FRAMEWORK = {
+    # YOUR SETTINGS
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Polls API",
+    "DESCRIPTION": "description",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    # OTHER SETTINGS
+}
