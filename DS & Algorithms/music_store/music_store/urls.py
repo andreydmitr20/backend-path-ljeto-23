@@ -1,4 +1,4 @@
-"""mysite URL Configuration
+"""music_store URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -14,11 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include, re_path
-
+from django.urls import path, include
 
 urlpatterns = [
-    re_path(r"^admin/shell/", include("django_admin_shell.urls")),
-    path("admin/", admin.site.urls),
-    path("polls/", include("polls.urls")),
+    path("admin/", admin.site.urls, name="admin"),
+    path("blog/", include("bands.urls"), name="blog"),
+    path("", include("bands.urls"), name="bands"),
+    path("", include("cms.urls"), name="cms"),
 ]
