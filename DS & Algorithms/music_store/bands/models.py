@@ -6,7 +6,7 @@ class Band(models.Model):
 
     name = models.CharField(max_length=200)
     can_rock = models.BooleanField(default=True)
-    image = models.URLField(default="")
+    image = models.URLField(default="", blank=True)
     description = models.CharField(max_length=500, default="")
 
     def __str__(self):

@@ -27,4 +27,9 @@ def band_detail(request, band_id: int):
 
 def band_search(request):
     """band search"""
-    pass
+    queried_band = request.GET["q"]
+    try:
+        results = Band.objects.filter(name__icontains=queried_band)
+    except:
+        results = {}
+    return render(request, "bands/band_searched.html", {"results": results})
